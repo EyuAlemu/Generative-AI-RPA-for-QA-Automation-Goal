@@ -1,0 +1,16 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "User login",
+      "as_a": "registered user",
+      "i_want": "log in to the site",
+      "so_that": "I can access my dashboard",
+      "acceptance_criteria": [
+        "Valid credentials redirect to /secure and show success banner",
+        "Invalid credentials show an error without redirect",
+        "Empty fields show validation errors"
+      ]
+    }
+  ]
+}

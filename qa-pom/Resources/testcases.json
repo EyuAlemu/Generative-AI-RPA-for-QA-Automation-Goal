@@ -1,0 +1,114 @@
+{
+  "test_suite_id": "TS-2023-001",
+  "source_story_id": "US-001",
+  "app_under_test": "https://www.saucedemo.com",
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Successful login with valid credentials",
+      "priority": "P1",
+      "tags": [
+        "login",
+        "smoke"
+      ],
+      "gherkin": "Scenario: Successful login with valid credentials Given a registered user When the user enters valid credentials Then the user should be redirected to /secure and see a success banner",
+      "steps": [
+        {
+          "action": "navigate",
+          "target": "https://www.saucedemo.com"
+        },
+        {
+          "action": "type",
+          "target": "#username",
+          "value": "${username}"
+        },
+        {
+          "action": "type",
+          "target": "#password",
+          "value": "${password}"
+        },
+        {
+          "action": "click",
+          "target": "input[type='submit']"
+        },
+        {
+          "action": "assert_contains",
+          "target": "#flash",
+          "value": "You logged into a secure area!"
+        }
+      ],
+      "expected_results": [
+        "User is redirected to /secure",
+        "Success banner is displayed"
+      ]
+    },
+    {
+      "id": "TC-002",
+      "title": "Unsuccessful login with invalid credentials",
+      "priority": "P2",
+      "tags": [
+        "login",
+        "negative"
+      ],
+      "gherkin": "Scenario: Unsuccessful login with invalid credentials Given a registered user When the user enters invalid credentials Then the user should see an error message without redirect",
+      "steps": [
+        {
+          "action": "navigate",
+          "target": "https://www.saucedemo.com"
+        },
+        {
+          "action": "type",
+          "target": "#username",
+          "value": "invalid_user"
+        },
+        {
+          "action": "type",
+          "target": "#password",
+          "value": "invalid_pass"
+        },
+        {
+          "action": "click",
+          "target": "input[type='submit']"
+        },
+        {
+          "action": "assert_contains",
+          "target": "#flash",
+          "value": "Username and password do not match"
+        }
+      ],
+      "expected_results": [
+        "Error message is displayed",
+        "User remains on the login page"
+      ]
+    },
+    {
+      "id": "TC-003",
+      "title": "Validation error for empty fields",
+      "priority": "P3",
+      "tags": [
+        "login",
+        "negative"
+      ],
+      "gherkin": "Scenario: Validation error for empty fields Given a registered user When the user submits the form without entering credentials Then the user should see validation errors",
+      "steps": [
+        {
+          "action": "navigate",
+          "target": "https://www.saucedemo.com"
+        },
+        {
+          "action": "click",
+          "target": "input[type='submit']"
+        },
+        {
+          "action": "assert_contains",
+          "target": "#flash",
+          "value": "Epic sadface: Username is required"
+        }
+      ],
+      "expected_results": [
+        "Validation error for empty username is displayed",
+        "User remains on the login page"
+      ]
+    }
+  ]
+}

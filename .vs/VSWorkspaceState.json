@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\genai",
+    "\\input",
+    "\\out",
+    "\\qa-pom",
+    "\\qa-pom\\bin\\Debug",
+    "\\qa-pom\\bin\\Debug\\net6.0",
+    "\\qa-pom\\Resources",
+    "\\qa-pom\\Tests",
+    "\\scripts"
+  ],
+  "SelectedNode": "\\qa-pom\\qa-pom.sln",
+  "PreviewInSolutionExplorer": false
+}
